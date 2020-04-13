@@ -31,7 +31,11 @@
     "docs": "jsdoc2md src/Studio.js > static/Studio.md",
     "check-build-eslint-browser": "ok-file static/dist/eslint-browser.js && not-in-publish || npm run build-eslint-browser",
     "build-eslint-browser": "jsreport-studio-build --config webpack/eslint-browser.config.js --stats.modules=false",
-    "build": "npm run build-eslint-browser && jsreport-studio-build --config webpack/prod.config.js --stats.modules=false"
+    "build": "npm run build-eslint-browser && jsreport-studio-build --config webpack/prod.config.js --stats.modules=false",
+    "server": "forever start -c 'npm start' -id 'reports-prod' ./",
+    "prod": "forever start -c 'npm start' --id 'reports-prod' ./",
+    "stop-prod": "forever stop -id 'reports-prod'",
+    "restart-prod": "forever restart -id 'reports-prod'"
   },
   "dependencies": {
     "bluebird": "3.5.4",
